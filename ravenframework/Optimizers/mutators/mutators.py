@@ -205,7 +205,7 @@ def locationsGenerator(offSprings,locs):
 
 def getLinearMutationProbability(iter, limit):
   """
-  This method is designed to DHM(Decreasing High Mutation) adaptive mutation methodology each iteration with probability.
+  This adaptive mutation function is designed to DHM(Decrease High Mutation) each iteration with probability.
   @ In, Current iteration number, Total iteration number
   @ Out, 1-(iteration / limit) as mutation rate
   """
@@ -213,7 +213,7 @@ def getLinearMutationProbability(iter, limit):
 
 def getQuadraticMutationProbability(iter, limit):
   """
-  This method is designed to Quadratic adaptive mutation methodology each iteration with probability.
+  This adaptive mutation function is designed to change the mutation probability Quadratically at each iteration.
   @ In, Current iteration number, Total iteration number
   @ Out, 1-(((1+iteration)/limit))^2 as mutation rate
   """
