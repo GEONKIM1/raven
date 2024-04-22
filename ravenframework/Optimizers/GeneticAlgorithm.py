@@ -246,7 +246,13 @@ class GeneticAlgorithm(RavenSampled):
         printPriority=108,
         descr=r""" The probability governing the crossover step, i.e., the probability that if exceeded crossover will occur.""")
     crossoverProbability.addParam("type", InputTypes.makeEnumType('crossoverProbability','crossoverProbabilityType',['static','adaptive']), False,
-                       descr="type of crossover operation to be used (e.g., static,adaptive)")
+                       descr="""type of crossover operation to be used (e.g., static,adaptive).
+                                "Static" uses an input value ranging from 0 to 1, which is used as a crossover probability.
+                                In a Genetic Algorithm, even as iterations are repeated, "Static" takes the use of a consistent probability value.
+                                "Adaptive" uses current values of 'linear' and 'quadratic' as inputs(crossover probability).
+                                In a Genetic Algorithm, it dynamically adjusts probability values based on
+                                the current iteration count (named 'iter') and the total number of iterations (named 'limit').
+                                The specific formulas for the inputs can be found in the file `crossover.py`.""")
     crossover.addSub(crossoverProbability)
     reproduction.addSub(crossover)
     # 2.  Mutation
@@ -271,7 +277,13 @@ class GeneticAlgorithm(RavenSampled):
         printPriority=108,
         descr=r""" The probability governing the mutation step, i.e., the probability that if exceeded mutation will occur.""")
     mutationProbability.addParam("type", InputTypes.makeEnumType('mutationProbability','mutationProbabilityType',['static','adaptive']), False,
-                       descr="type of mutation probability operation to be used (e.g., static, adaptive)")
+                       descr="""type of mutation operation to be used (e.g., static,adaptive).
+                                "Static" uses an input value ranging from 0 to 1, which is used as a mutation probability.
+                                In a Genetic Algorithm, even as iterations are repeated, "Static" takes the use of a consistent probability value.
+                                "Adaptive" uses current values of 'linear' and 'quadratic' as inputs(mutation probability).
+                                In a Genetic Algorithm, it dynamically adjusts probability values based on
+                                the current iteration count (named 'iter') and the total number of iterations (named 'limit').
+                                The specific formulas for the inputs can be found in the file `mutators.py`.""")
     mutation.addSub(mutationProbability)
     reproduction.addSub(mutation)
     GAparams.addSub(reproduction)
